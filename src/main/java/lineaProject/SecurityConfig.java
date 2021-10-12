@@ -35,11 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().disable();
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-//                .antMatchers("/form").hasRole("USER")
+                .antMatchers("/user/**").hasRole("CLIENT")
 //                .antMatchers("/admin").hasRole("ADMIN")
                 .and()
                 .formLogin()
-                .loginPage("/login")
+//                .loginPage("/login")
+        .defaultSuccessUrl("/user/dashboard")
 //                .successHandler(myAuthenticationSuccessHandler())
         ;
 
