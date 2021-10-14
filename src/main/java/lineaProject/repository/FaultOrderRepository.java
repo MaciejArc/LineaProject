@@ -4,9 +4,11 @@ import lineaProject.entity.FaultOrder;
 import lineaProject.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface FaultOrderRepository extends JpaRepository<FaultOrder,Long> {
 
     Boolean existsByClientAndId(User user, Long id);
 
-    FaultOrder findFaultOrderByClientId(Long id);
+    List<FaultOrder> findFaultOrdersByClientId(Long id);
 }

@@ -3,7 +3,6 @@ package lineaProject.controller;
 import lineaProject.entity.Addresses;
 import lineaProject.entity.FaultOrder;
 import lineaProject.entity.User;
-import lineaProject.repository.FaultOrderRepository;
 import lineaProject.service.AddressesService;
 import lineaProject.service.FaultOrderService;
 import lineaProject.service.UserService;
@@ -13,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+
 
 @Controller
 public class UserController {
@@ -59,6 +60,14 @@ public class UserController {
 
     }
 
+    @GetMapping("/login")
+    public String login(Model model, @RequestParam(required = false) String error){
+        if(error != null){
+            model.addAttribute("error","Błedne dane logowania.");
+        }
+        return ("login");
+    }
+
     @GetMapping("/user/dashboard")
     public String dashboard(Model model) {
 
@@ -84,27 +93,55 @@ public class UserController {
         return "redirect:/user/addresses";
     }
 
+    @GetMapping("/user/myFaultOrder")
+    public String myFaultOrder(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("faultOrders",faultOrderService.findAllFaultOrderByClientId(user.getId()));
+
+
+        return "user/myFaultOrder";
+    }
     @GetMapping("/user/addFaultOrder")
     public String addFaultOrder(Model model, HttpServletRequest request) {
 
-        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (request.getParameter("id").isEmpty()) {
             model.addAttribute("faultOrder", new FaultOrder());
 
         } else {
             Long id = Long.parseLong(request.getParameter("id"));
-            if (faultOrderService.faultOrderVerification(principal, id)) {
-                model.addAttribute("faultOrder", faultOrderService.findFaultOrederByClientId(id));
+            if (faultOrderService.faultOrderVerification(user, id)) {
+                model.addAttribute("faultOrder", faultOrderService.findFaultOrderById(id));
             } else {
-                return "redirect:/user/start";
+                return "redirect:/user/myFaultOrder";
             }
 
         }
 
-
-        model.addAttribute("addresses", addressesService.findAddressesById(principal.getId()));
+        model.addAttribute("addresses", addressesService.findAddressesById(user.getId()));
         return "user/addFaultOrder";
+    }
+
+    @PostMapping("/user/addFaultOrder")
+    public String addFaultOrderPost(@Valid FaultOrder faultOrder, BindingResult result, Model model, HttpServletRequest request) {
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (result.hasErrors()) {
+            model.addAttribute("addresses", addressesService.findAddressesById(user.getId()));
+            return "user/addFaultOrder";
+        }
+        if (request.getParameter("id").isEmpty()) {
+            faultOrderService.addNewFaultOrder(faultOrder,user);
+
+        } else {
+            FaultOrder faultOrder2 = faultOrderService.findFaultOrderById(faultOrder.getId());
+            faultOrderService.editFaultOrder(faultOrder2,user,faultOrder.getAddress(),faultOrder.getDescription());
+
+        }
+        return "redirect:/user/myFaultOrder";
+
     }
 
 }

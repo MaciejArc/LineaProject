@@ -10,15 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>"/>
-    <title>Line Project</title>
+    <title>Linea Project</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="http://localhost:8080">Linea</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,7 +32,7 @@
                     <a class="nav-link" href="#">Instrukcja</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="#">
+                    <a class="nav-link" href="#">
                         O mnie
                     </a>
                 </li>
@@ -57,61 +59,33 @@
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                            <form:form modelAttribute="user" >
 
+                            <form action="login" method="post">
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
 
                                         <div class="form-outline">
-                                            <form:input path="firstName" cssClass="form-control form-control-lg"/><form:errors path="firstName"/>
-                                            <label class="form-label" for="firstName">Imię</label>
+                                            <input type="email" name="username" placeholder="Email"/>
+
                                         </div>
 
                                     </div>
                                     <div class="col-md-6 mb-4">
 
                                         <div class="form-outline">
-                                            <form:input path="lastName" cssClass="form-control form-control-lg"/><form:errors path="lastName"/>
-                                            <label class="form-label" for="firstName">Nazwisko</label>
+                                            <input type="password" name="password" placeholder="Hasło"/>
+
                                         </div>
 
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 pb-2">
-
-                                        <div class="form-outline">
-                                            <form:input path="email" cssClass="form-control form-control-lg"/><form:errors path="email"/>
-                                            <label class="form-label" for="firstName">Email</label>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6 mb-4 pb-2">
-
-                                        <div class="form-outline">
-                                            <form:input path="phone" cssClass="form-control form-control-lg"/><form:errors path="phone"/>
-                                            <label class="form-label" for="firstName">Telefon</label>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 pb-2">
-
-                                        <div class="form-outline">
-                                            <form:password path="password" cssClass="form-control form-control-lg"/><form:errors path="password"/>
-                                            <label class="form-label" for="firstName">Hasło</label>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                <p>${error}</p>
 
                                 <div class="mt-4 pt-2">
-                                    <input class="btn btn-primary btn-lg" type="submit" value="Wyślij" />
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Wyślij"/>
                                 </div>
 
-                            </form:form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -122,7 +96,9 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
