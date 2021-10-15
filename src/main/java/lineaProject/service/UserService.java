@@ -5,6 +5,8 @@ import lineaProject.repository.UserRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 @Configuration
 public class UserService {
 
@@ -26,5 +28,15 @@ public class UserService {
     }
     public User findByEmail(String email){
         return userRepository.findUserByEmail(email);
+    }
+
+    public List<User> findAllWorkers(){
+        return userRepository.findUsersByRole("ROLE_WORKER");
+    }
+
+    public User registryNewWorker(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("ROLE_WORKER");
+        return userRepository.save(user);
     }
 }

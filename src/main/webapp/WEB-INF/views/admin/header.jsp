@@ -62,14 +62,14 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/admin/institution">
+            <a class="nav-link" href="http://localhost:8080/admin/companies">
                 <i class="fas fa-fw fa-university"></i>
-                <span>Instytucje</span></a>
+                <span>Firmy</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/admin/users">
+            <a class="nav-link" href="http://localhost:8080/admin/workers">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Użytkownicy</span></a>
+                <span>Pracownicy</span></a>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
