@@ -1,5 +1,6 @@
 package lineaProject.controller;
 
+import lineaProject.entity.Company;
 import lineaProject.entity.User;
 import lineaProject.service.CompanyService;
 import lineaProject.service.UserService;
@@ -23,10 +24,11 @@ public class AdminController {
     }
 
     @GetMapping("/admin/dashboard")
-    public String dashboard(){
+    public String dashboard() {
 
-    return "admin/index";
-}
+        return "admin/index";
+    }
+
     @GetMapping("/admin/workers")
     public String allWorkers(Model model) {
         model.addAttribute("workers", userService.findAllWorkers());
@@ -65,4 +67,24 @@ public class AdminController {
         model.addAttribute("companies", companyService.findAllCompany());
         return "admin/allCompanies";
     }
+
+    @GetMapping("/admin/addCompany")
+    public String addCompany(Model model) {
+        model.addAttribute("company", new Company());
+        model.addAttribute("admins", userService.findAllAdmins());
+
+        return "admin/addCompany";
+    }
+
+    @PostMapping("/admin/addCompany")
+    public String addCompanyPost(@Valid Company company, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "admin/addCompany";
+        }
+        companyService.addNewCompany(company);
+        return "admin/allCompanies";
+
+    }
+
+
 }

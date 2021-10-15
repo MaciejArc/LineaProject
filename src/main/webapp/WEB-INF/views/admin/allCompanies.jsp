@@ -3,8 +3,8 @@
 <%@ include file="header.jsp" %>
 <div class="container-fluid">
     <section>
-        <a href="http://localhost:8080/admin/addWorker">
-            <button type="button" class="btn btn-primary btn-lg">Dodaj pracownika</button>
+        <a href="http://localhost:8080/admin/addCompany">
+            <button type="button" class="btn btn-primary btn-lg">Dodaj firmę</button>
         </a>
         <table class="table">
             <thead>

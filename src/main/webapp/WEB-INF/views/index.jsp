@@ -49,7 +49,27 @@
 </nav>
 
 <div class="container">
-
+    # FinalProject - CodersLab <br>
+    > Application managing the submission of defects in a construction company. <br>
+    ## General Information <br>
+    - My Final Project in CodersLab v2 with Spring boot and simple bootstrap. <br>
+    <br>
+    ## Technologies Used <br>
+    -Spring Boot <br>
+    <br>
+    -Spring Form <br>
+    <br>
+    -Hibernate <br>
+    <br>
+    -Spring Data JPA <br>
+    <br>
+    -Spring Security <br>
+    <br>
+    ## Project Status <br>
+    In progress <br>
+    <br>
+    ## Contact <br>
+    Created by [@MaciejNowak](https://github.com/MaciejArc/)
 </div>
 <!-- Optional JavaScript; choose one of the two! -->
 

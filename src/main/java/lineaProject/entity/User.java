@@ -44,6 +44,9 @@ public class User implements UserDetails {
     @Transient
     private String fullName;
 
+    @Transient
+    private String fullNameAndCompany;
+
 
     public Long getId() {
         return id;
@@ -119,6 +122,14 @@ public class User implements UserDetails {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getFullNameAndCompany() {
+        return String.format("%s %s (%s)",getFirstName(),getLastName(),getCompany().getName());
+    }
+
+    public void setFullNameAndCompany(String fullNameAndCompany) {
+        this.fullNameAndCompany = fullNameAndCompany;
     }
 
     @Override

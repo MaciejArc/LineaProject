@@ -34,6 +34,8 @@ public class UserService {
         return userRepository.findUsersByRole("ROLE_WORKER");
     }
 
+    public List<User> findAllAdmins(){return userRepository.findUsersByRole("ROLE_ADMIN");}
+
     public User registryNewWorker(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_WORKER");
