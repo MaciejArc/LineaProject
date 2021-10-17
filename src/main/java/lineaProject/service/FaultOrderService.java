@@ -42,4 +42,13 @@ public class FaultOrderService {
         return faultOrderRepository.save(faultOrder);
     }
 
+    public List<FaultOrder> findAllFaultOrder(){
+        return faultOrderRepository.findAll();
+    }
+
+    public FaultOrder adminEditFaultOrder(FaultOrder faultOrder, FaultOrder faultOrder1){
+        faultOrder1.setUser(faultOrder.getUser());
+        faultOrder1.setStatus(faultOrder.getStatus());
+        return faultOrderRepository.save(faultOrder1);
+    }
 }

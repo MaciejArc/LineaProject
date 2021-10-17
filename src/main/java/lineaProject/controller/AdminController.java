@@ -1,8 +1,10 @@
 package lineaProject.controller;
 
 import lineaProject.entity.Company;
+import lineaProject.entity.FaultOrder;
 import lineaProject.entity.User;
 import lineaProject.service.CompanyService;
+import lineaProject.service.FaultOrderService;
 import lineaProject.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -17,10 +20,12 @@ public class AdminController {
 
     private final UserService userService;
     private final CompanyService companyService;
+    private final FaultOrderService faultOrderService;
 
-    public AdminController(UserService userService, CompanyService companyService) {
+    public AdminController(UserService userService, CompanyService companyService, FaultOrderService faultOrderService) {
         this.userService = userService;
         this.companyService = companyService;
+        this.faultOrderService = faultOrderService;
     }
 
     @GetMapping("/admin/dashboard")
@@ -29,6 +34,7 @@ public class AdminController {
         return "admin/index";
     }
 
+    // WORKERS
     @GetMapping("/admin/workers")
     public String allWorkers(Model model) {
         model.addAttribute("workers", userService.findAllWorkers());
@@ -62,6 +68,7 @@ public class AdminController {
 
     }
 
+    //COMPANY
     @GetMapping("/admin/companies")
     public String allCompanies(Model model) {
         model.addAttribute("companies", companyService.findAllCompany());
@@ -86,5 +93,27 @@ public class AdminController {
 
     }
 
+    //FaultOrder
+    @GetMapping("/admin/faultOrders")
+    public String allFaultOrder(Model model) {
+        model.addAttribute("faultOrders", faultOrderService.findAllFaultOrder());
+        return "admin/allFaultOrders";
+    }
 
+    @GetMapping("/admin/editFaultOrder")
+    public String editFaultOrder(Model model, HttpServletRequest request) {
+        Long id = Long.parseLong(request.getParameter("id"));
+        model.addAttribute("faultOrder", faultOrderService.findFaultOrderById(id));
+        model.addAttribute("workers", userService.findAllWorkers());
+        return "admin/editFaultOrder";
+
+    }
+
+    @PostMapping("/admin/editFaultOrder")
+    public String editFaultOrder(FaultOrder faultOrder){
+        FaultOrder faultOrder1 = faultOrderService.findFaultOrderById(faultOrder.getId());
+        faultOrderService.adminEditFaultOrder(faultOrder,faultOrder1);
+        return "redirect:/admin/faultOrders";
+
+    }
 }

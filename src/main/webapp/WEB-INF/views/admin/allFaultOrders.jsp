@@ -1,10 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="header.jsp" %>
-<div class="container" style="height: 1000px">
-
-
+<div class="container-fluid">
     <section>
         <h2>Lista usterek:</h2>
         <table class="table">
@@ -27,17 +24,19 @@
                     <td>${faultOrder.address.fullAddress}</td>
                     <td>${faultOrder.status}</td>
                     <td>${faultOrder.user.fullName}</td>
-                    <td><a href="http://localhost:8080/user/addFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
+                    <td><a href="http://localhost:8080/admin/editFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
                 </tr>
 
             </c:forEach>
 
             </tbody>
         </table>
-        <a href="http://localhost:8080/user/addFaultOrder?id=">
-            <button type="button" class="btn btn-primary btn-lg">Dodaj nową usterkę</button>
-        </a>
+
 
     </section>
+
 </div>
+</div>
+<!-- End of Main Content -->
+
 <%@ include file="footer.jsp" %>
