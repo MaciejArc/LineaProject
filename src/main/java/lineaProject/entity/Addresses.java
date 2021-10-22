@@ -15,8 +15,10 @@ public class Addresses {
     @NotBlank
     private String houseNumber;
 
+    @NotBlank
     private String zipCode;
 
+    @NotBlank
     private String city;
 
     private String typeOfHouse;

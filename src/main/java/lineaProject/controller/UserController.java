@@ -78,8 +78,8 @@ public class UserController {
     public String addresses(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("userName", user.getFullName());
-        model.addAttribute("address", new Addresses());
-        model.addAttribute("addresses",addressesService.findAddressesById(user.getId()));
+        model.addAttribute("addresses", new Addresses());
+        model.addAttribute("myAddresses",addressesService.findAddressesById(user.getId()));
         return "user/addresses";
     }
     @PostMapping("/user/addresses")
@@ -87,6 +87,8 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (result.hasErrors()) {
+            model.addAttribute("myAddresses",addressesService.findAddressesById(user.getId()));
+            model.addAttribute("userName", user.getFullName());
             return "user/addresses";
         }
         addressesService.addNewAddress(addresses,user);

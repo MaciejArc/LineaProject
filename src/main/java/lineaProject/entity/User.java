@@ -24,11 +24,12 @@ public class User implements UserDetails {
     @NotBlank
     private String lastName;
 
-    @Size(min = 5)
+    @Size(min = 5, message = "{validation.password}")
     private String password;
 
     @Column(unique = true)
     @Email
+    @NotBlank
     private String email;
 
     @OneToOne

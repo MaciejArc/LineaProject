@@ -3,38 +3,38 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="header.jsp" %>
 <div class="container" style="height: 1000px">
-<section>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Ulica</th>
-            <th scope="col">Nr domu</th>
-            <th scope="col">Kod pocztowy</th>
-            <th scope="col">Miasto</th>
-            <th scope="col">Typ mieszkania</th>
-            <th scope="col">Akcja</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${addresses}" var="address">
+    <section>
+        <table class="table">
+            <thead>
             <tr>
-                <th scope="row"></th>
-                <td>${address.street}</td>
-                <td>${address.houseNumber}</td>
-                <td>${address.zipCode}</td>
-                <td>${address.city}</td>
-                <td>${address.typeOfHouse}</td>
-                <td>Edytuj Usuń</td>
+                <th scope="col">#</th>
+                <th scope="col">Ulica</th>
+                <th scope="col">Nr domu</th>
+                <th scope="col">Kod pocztowy</th>
+                <th scope="col">Miasto</th>
+                <th scope="col">Typ mieszkania</th>
+                <th scope="col">Akcja</th>
             </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${myAddresses}" var="address">
+                <tr>
+                    <th scope="row"></th>
+                    <td>${address.street}</td>
+                    <td>${address.houseNumber}</td>
+                    <td>${address.zipCode}</td>
+                    <td>${address.city}</td>
+                    <td>${address.typeOfHouse}</td>
+                    <td>Edytuj Usuń</td>
+                </tr>
 
-        </c:forEach>
+            </c:forEach>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
 
-</section>
+    </section>
 
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
@@ -43,15 +43,15 @@
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Dodaj nowy adres</h3>
-                            <form:form modelAttribute="address">
+                            <form:form modelAttribute="addresses">
 
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
 
                                         <div class="form-outline">
                                             <form:input path="street"
-                                                        cssClass="form-control form-control-lg"/><form:errors
-                                                path="street"/>
+                                                        cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="street"/></p>
                                             <label class="form-label" for="street">Ulica</label>
                                         </div>
 
@@ -60,8 +60,8 @@
 
                                         <div class="form-outline">
                                             <form:input path="houseNumber"
-                                                        cssClass="form-control form-control-lg"/><form:errors
-                                                path="houseNumber"/>
+                                                        cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="houseNumber"/></p>
                                             <label class="form-label" for="houseNumber">Nr domu</label>
                                         </div>
 
@@ -73,8 +73,8 @@
 
                                         <div class="form-outline">
                                             <form:input path="zipCode"
-                                                        cssClass="form-control form-control-lg"/><form:errors
-                                                path="zipCode"/>
+                                                        cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="zipCode"/></p>
                                             <label class="form-label" for="zipCode">Kod pocztowy(xx-xxx)</label>
                                         </div>
 
@@ -82,9 +82,8 @@
                                     <div class="col-md-6 mb-4 pb-2">
 
                                         <div class="form-outline">
-                                            <form:input path="city"
-                                                        cssClass="form-control form-control-lg"/><form:errors
-                                                path="city"/>
+                                            <form:input path="city" cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="city"/></p>
                                             <label class="form-label" for="city">Miasto</label>
                                         </div>
 
@@ -95,14 +94,15 @@
 
                                     <div class="col-md-6 mb-4 pb-2">
 
-                                    <div class="form-outline">
-                                        <form:input path="typeOfHouse"
-                                                    cssClass="form-control form-control-lg"/><form:errors
-                                            path="typeOfHouse"/>
-                                        <label class="form-label" for="typeOfHouse">Typ mieszkania(opcjonalnie)</label>
-                                    </div>
+                                        <div class="form-outline">
+                                            <form:input path="typeOfHouse"
+                                                        cssClass="form-control form-control-lg"/><form:errors
+                                                path="typeOfHouse"/>
+                                            <label class="form-label" for="typeOfHouse">Typ
+                                                mieszkania(opcjonalnie)</label>
+                                        </div>
 
-                                </div>
+                                    </div>
                                 </div>
 
                                 <div class="mt-4 pt-2">

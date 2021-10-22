@@ -63,7 +63,8 @@
                                     <div class="col-md-6 mb-4">
 
                                         <div class="form-outline">
-                                            <form:input path="firstName" cssClass="form-control form-control-lg"/><form:errors path="firstName"/>
+                                            <form:input path="firstName" cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="firstName"/></p>
                                             <label class="form-label" for="firstName">Imię</label>
                                         </div>
 
@@ -71,7 +72,8 @@
                                     <div class="col-md-6 mb-4">
 
                                         <div class="form-outline">
-                                            <form:input path="lastName" cssClass="form-control form-control-lg"/><form:errors path="lastName"/>
+                                            <form:input path="lastName" cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="lastName"/></p>
                                             <label class="form-label" for="firstName">Nazwisko</label>
                                         </div>
 
@@ -82,7 +84,8 @@
                                     <div class="col-md-6 mb-4 pb-2">
 
                                         <div class="form-outline">
-                                            <form:input path="email" cssClass="form-control form-control-lg"/><form:errors path="email"/>
+                                            <form:input path="email" cssClass="form-control form-control-lg"/>
+                                           <p><form:errors path="email"/></p>
                                             <label class="form-label" for="firstName">Email</label>
                                         </div>
 
@@ -90,7 +93,8 @@
                                     <div class="col-md-6 mb-4 pb-2">
 
                                         <div class="form-outline">
-                                            <form:input path="phone" cssClass="form-control form-control-lg"/><form:errors path="phone"/>
+                                            <form:input path="phone" cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="phone"/></p>
                                             <label class="form-label" for="firstName">Telefon</label>
                                         </div>
 
@@ -100,7 +104,8 @@
                                     <div class="col-md-6 mb-4 pb-2">
 
                                         <div class="form-outline">
-                                            <form:password path="password" cssClass="form-control form-control-lg"/><form:errors path="password"/>
+                                            <form:password path="password" cssClass="form-control form-control-lg"/>
+                                            <p><form:errors path="password"/></p>
                                             <label class="form-label" for="firstName">Hasło</label>
                                         </div>
 
