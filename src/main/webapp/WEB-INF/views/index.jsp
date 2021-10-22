@@ -38,9 +38,9 @@
 
 
             <div class="col-md-3 text-end">
-                <a href="http://localhost:8080/login"><button type="button" class="btn btn-outline-primary me-2">Logowanie</button></a>
+                <a href="https://linea-project.herokuapp.com/login"><button type="button" class="btn btn-outline-primary me-2">Logowanie</button></a>
 
-                <a href="http://localhost:8080/register"><button type="button" class="btn btn-primary">Rejestracja</button></a>
+                <a href="https://linea-project.herokuapp.com/register"><button type="button" class="btn btn-primary">Rejestracja</button></a>
             </div>
 
 

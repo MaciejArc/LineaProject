@@ -62,17 +62,17 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/admin/companies">
+            <a class="nav-link" href="https://linea-project.herokuapp.com/admin/companies">
                 <i class="fas fa-fw fa-university"></i>
                 <span>Firmy</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/admin/workers">
+            <a class="nav-link" href="https://linea-project.herokuapp.com/admin/workers">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Pracownicy</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/admin/faultOrders">
+            <a class="nav-link" href="http://https://linea-project.herokuapp.com/admin/faultOrders">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Usterki</span></a>
         </li>

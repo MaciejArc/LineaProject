@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="http://localhost:8080/user/myFaultOrder">Moje usterki</a>
+                    <a class="nav-link active" aria-current="page" href="https://linea-project.herokuapp.com/user/myFaultOrder">Moje usterki</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="http://localhost:8080/user/addresses">Adresy</a>
+                    <a class="nav-link active" href="https://linea-project.herokuapp.com/user/addresses">Adresy</a>
                 </li>
 
 
