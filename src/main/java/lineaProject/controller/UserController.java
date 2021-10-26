@@ -65,7 +65,7 @@ public class UserController {
         if(error != null){
             model.addAttribute("error","Błedne dane logowania.");
         }
-        return ("login");
+        return "login";
     }
 
     @GetMapping("/user/dashboard")
