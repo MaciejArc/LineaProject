@@ -24,7 +24,7 @@
                     <td>${faultOrder.address.fullAddress}</td>
                     <td>${faultOrder.status}</td>
                     <td>${faultOrder.user.fullName}</td>
-                    <td><a href="http://localhost:8080/admin/editFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
+                    <td><a href="https://linea-project.herokuapp.com/admin/editFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
                 </tr>
 
             </c:forEach>

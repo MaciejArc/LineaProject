@@ -47,7 +47,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="http://localhost:8080/admin/dashboard">
+            <a class="nav-link" href="https://linea-project.herokuapp.com/admin/dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -72,7 +72,7 @@
                 <span>Pracownicy</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://https://linea-project.herokuapp.com/admin/faultOrders">
+            <a class="nav-link" href="https://linea-project.herokuapp.com/admin/faultOrders">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Usterki</span></a>
         </li>

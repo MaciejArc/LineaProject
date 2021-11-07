@@ -3,7 +3,7 @@
 <%@ include file="header.jsp" %>
 <div class="container-fluid">
     <section>
-        <a href="http://localhost:8080/admin/addWorker">
+        <a href="https://linea-project.herokuapp.com/admin/addWorker">
             <button type="button" class="btn btn-primary btn-lg">Dodaj pracownika</button>
         </a>
         <table class="table">
