@@ -54,7 +54,7 @@
                                                 <form:select items="${admins}" path="owner" itemValue="id"
                                                              itemLabel="fullNameAndCompany" cssClass="form-control form-control-lg" cssStyle="font-size: 0.9rem"/>
                                                 <form:errors path="owner"/>
-                                                <label class="form-label" for="firstName">Właściciel</label>
+                                                <label class="form-label" for="owner">Właściciel</label>
                                             </div>
 
 
