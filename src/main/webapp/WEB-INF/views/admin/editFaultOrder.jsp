@@ -46,7 +46,7 @@
                                     <div class="col-md-6 mb-4 pb-2">
 
                                         <div class="form-outline">
-                                            <form:select path="user" items="${workers}" itemLabel="fullNameAndCompany" itemValue="id"
+                                            <form:select path="user" items="${workers}" itemLabel="fullName" itemValue="id"
                                                          cssClass="form-control form-control-lg" cssStyle="font-size: 0.9rem"/><form:errors
                                                 path="user"/>
                                             <label class="form-label" for="user">Wykonawca</label>

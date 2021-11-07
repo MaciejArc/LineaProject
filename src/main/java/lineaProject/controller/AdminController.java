@@ -6,11 +6,14 @@ import lineaProject.entity.User;
 import lineaProject.service.CompanyService;
 import lineaProject.service.FaultOrderService;
 import lineaProject.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -26,6 +29,11 @@ public class AdminController {
         this.userService = userService;
         this.companyService = companyService;
         this.faultOrderService = faultOrderService;
+    }
+    @ModelAttribute
+    public void addAttribute(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("userName", user.getFullName());
     }
 
     @GetMapping("/admin/dashboard")
@@ -76,22 +84,36 @@ public class AdminController {
     }
 
     @GetMapping("/admin/addCompany")
-    public String addCompany(Model model) {
-        model.addAttribute("company", new Company());
+    public String addCompany(Model model, @RequestParam(value = "id", required = false) String request) {
+      if(request.isEmpty()){
+          model.addAttribute("company", new Company());
+      }else {
+          Long id =Long.parseLong(request);
+          model.addAttribute("company", companyService.findCompanyById(id));
+      }
         model.addAttribute("admins", userService.findAllAdmins());
+
 
         return "admin/addCompany";
     }
 
     @PostMapping("/admin/addCompany")
-    public String addCompanyPost(@Valid Company company, BindingResult result, Model model) {
+    public String addCompanyPost(@Valid Company company, BindingResult result, Model model, @RequestParam(value = "id", required = false) String request) {
         if (result.hasErrors()) {
             return "admin/addCompany";
         }
-        companyService.addNewCompany(company);
-        return "admin/allCompanies";
+        if(request.isEmpty()){
+            companyService.addNewCompany(company);
+            return "admin/companies";
+        }else {
+            Company company1 = companyService.findCompanyById(Long.parseLong(request));
+            companyService.editCompany(company1,company);
+
+        }
+        return "admin/companies";
 
     }
+
 
     //FaultOrder
     @GetMapping("/admin/faultOrders")

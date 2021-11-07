@@ -21,4 +21,14 @@ public class CompanyService {
     public Company addNewCompany(Company company){
       return companyRepository.save(company);
     }
+
+    public Company findCompanyById(Long id){return companyRepository.findById(id).get();}
+
+    public Company editCompany(Company company, Company company1){
+        company.setName(company1.getName());
+        company.setNip(company1.getNip());
+        company.setOwner(company1.getOwner());
+        company.setPhone(company1.getPhone());
+        return companyRepository.save(company);
+    }
 }
