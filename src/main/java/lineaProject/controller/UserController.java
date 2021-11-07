@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,10 +33,23 @@ public class UserController {
         this.faultOrderService = faultOrderService;
     }
 
+    @ModelAttribute
+    public void addAttribute(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("userName", user.getFullName());
+    }
+
+
     @GetMapping("/")
     public String start() {
         return "index";
     }
+
+    @GetMapping("/about")
+    public String about(){return "abuoutProject";}
+
+    @GetMapping("/instruction")
+    public String instruction(){return "instruction";}
 
     @GetMapping("/register")
     public String registration(Model model) {
@@ -61,9 +75,9 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model, @RequestParam(required = false) String error){
-        if(error != null){
-            model.addAttribute("error","Błedne dane logowania.");
+    public String login(Model model, @RequestParam(required = false) String error) {
+        if (error != null) {
+            model.addAttribute("error", "Błedne dane logowania.");
         }
         return "login";
     }
@@ -77,32 +91,33 @@ public class UserController {
     @GetMapping("/user/addresses")
     public String addresses(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("userName", user.getFullName());
         model.addAttribute("addresses", new Addresses());
-        model.addAttribute("myAddresses",addressesService.findAddressesById(user.getId()));
+        model.addAttribute("myAddresses", addressesService.findAddressesById(user.getId()));
         return "user/addresses";
     }
+
     @PostMapping("/user/addresses")
     public String addressesPost(@Valid Addresses addresses, BindingResult result, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (result.hasErrors()) {
-            model.addAttribute("myAddresses",addressesService.findAddressesById(user.getId()));
+            model.addAttribute("myAddresses", addressesService.findAddressesById(user.getId()));
             model.addAttribute("userName", user.getFullName());
             return "user/addresses";
         }
-        addressesService.addNewAddress(addresses,user);
+        addressesService.addNewAddress(addresses, user);
         return "redirect:/user/addresses";
     }
 
     @GetMapping("/user/myFaultOrder")
-    public String myFaultOrder(Model model){
+    public String myFaultOrder(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("faultOrders",faultOrderService.findAllFaultOrderByClientId(user.getId()));
+        model.addAttribute("faultOrders", faultOrderService.findAllFaultOrderByClientId(user.getId()));
 
 
         return "user/myFaultOrder";
     }
+
     @GetMapping("/user/addFaultOrder")
     public String addFaultOrder(Model model, HttpServletRequest request) {
 
@@ -135,11 +150,11 @@ public class UserController {
             return "user/addFaultOrder";
         }
         if (request.getParameter("id").isEmpty()) {
-            faultOrderService.addNewFaultOrder(faultOrder,user);
+            faultOrderService.addNewFaultOrder(faultOrder, user);
 
         } else {
             FaultOrder faultOrder2 = faultOrderService.findFaultOrderById(faultOrder.getId());
-            faultOrderService.editFaultOrder(faultOrder2,user,faultOrder.getAddress(),faultOrder.getDescription());
+            faultOrderService.editFaultOrder(faultOrder2, user, faultOrder.getAddress(), faultOrder.getDescription());
 
         }
         return "redirect:/user/myFaultOrder";
