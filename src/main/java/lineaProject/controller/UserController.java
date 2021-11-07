@@ -40,47 +40,9 @@ public class UserController {
     }
 
 
-    @GetMapping("/")
-    public String start() {
-        return "index";
-    }
 
-    @GetMapping("/about")
-    public String about(){return "abuoutProject";}
 
-    @GetMapping("/instruction")
-    public String instruction(){return "instruction";}
 
-    @GetMapping("/register")
-    public String registration(Model model) {
-
-        model.addAttribute("user", new User());
-        return "registration";
-    }
-
-    @PostMapping("/register")
-    public String clientAddPost(@Valid User user, BindingResult result, Model model) {
-
-        if (result.hasErrors()) {
-            return "registration";
-        }
-
-        if (userService.emailExist(user.getEmail())) {
-            model.addAttribute("error", "Użytkownik o podanym adresie email istnieje!");
-            return "registration";
-        }
-        userService.registryNewAccount(user);
-        return "redirect:/";
-
-    }
-
-    @GetMapping("/login")
-    public String login(Model model, @RequestParam(required = false) String error) {
-        if (error != null) {
-            model.addAttribute("error", "Błedne dane logowania.");
-        }
-        return "login";
-    }
 
     @GetMapping("/user/dashboard")
     public String dashboard(Model model) {
