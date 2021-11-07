@@ -26,7 +26,7 @@ public class HomeController {
     }
 
     @GetMapping("/about")
-    public String about(){return "abuoutProject";}
+    public String about(){return "aboutProject";}
 
     @GetMapping("/instruction")
     public String instruction(){return "instruction";}

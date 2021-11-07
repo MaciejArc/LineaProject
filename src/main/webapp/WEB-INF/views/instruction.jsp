@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="https://linea-project.herokuapp.com/about">O projekcie</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="https://linea-project.herokuapp.com/instruction">Instrukcja</a>
                 </li>
 
