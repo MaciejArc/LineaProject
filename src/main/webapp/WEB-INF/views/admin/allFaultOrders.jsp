@@ -9,6 +9,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Opis usterki</th>
+                <th scope="col">Zgłaszający</th>
                 <th scope="col">Adres</th>
                 <th scope="col">Status</th>
                 <th scope="col">Wykonawca</th>
@@ -21,9 +22,10 @@
 
                     <td>${count.count}</td>
                     <td>${faultOrder.description}</td>
+                    <td><a href="https://linea-project.herokuapp.com/admin/userInfo?id=${faultOrder.client.id}">${faultOrder.client.fullName}</a></td>
                     <td>${faultOrder.address.fullAddress}</td>
-                    <td>${faultOrder.status}</td>
-                    <td>${faultOrder.user.fullName}</td>
+                    <td class="status">${faultOrder.status}</td>
+                    <td><a href="https://linea-project.herokuapp.com/admin/userInfo?id=${faultOrder.user.id}">${faultOrder.user.fullName}</a> </td>
                     <td><a href="https://linea-project.herokuapp.com/admin/editFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
                 </tr>
 

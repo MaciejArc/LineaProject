@@ -88,16 +88,24 @@ public class AdminController {
         return "admin/editWorker";
 
     }
-    @PostMapping("/admin/editWorker")
-    public String editWorkerPost(@Valid User user,BindingResult result,@RequestParam(value = "id") String id){
 
-        if(result.hasErrors()){
+    @PostMapping("/admin/editWorker")
+    public String editWorkerPost(@Valid User user, BindingResult result, @RequestParam(value = "id") String id) {
+
+        if (result.hasErrors()) {
             return "admin/editWorker";
-        }else {
-            userService.editWorker(userService.findById(id),user);
-            return "admin/allWorkers";
+        } else {
+            userService.editWorker(userService.findById(id), user);
+            return "redirect: /admin/workers";
         }
 
+    }
+
+    @GetMapping("admin/userInfo")
+    public String userInfo(Model model, @RequestParam(value = "id") String id) {
+        model.addAttribute("user", userService.findById(id));
+
+        return "admin/userInfo";
     }
 
     //COMPANY
