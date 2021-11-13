@@ -36,9 +36,16 @@ public class UserService {
 
     public List<User> findAllAdmins(){return userRepository.findUsersByRole("ROLE_ADMIN");}
 
+    public User findById (String id){return userRepository.findById(Long.parseLong(id)).get();}
+
     public User registryNewWorker(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_WORKER");
         return userRepository.save(user);
+    }
+    public User editWorker(User user, User editUser){
+        editUser.setRole("ROLE_WORKER");
+        editUser.setPassword(user.getPassword());
+        return userRepository.save(editUser);
     }
 }

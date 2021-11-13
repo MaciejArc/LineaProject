@@ -30,6 +30,7 @@ public class AdminController {
         this.companyService = companyService;
         this.faultOrderService = faultOrderService;
     }
+
     @ModelAttribute
     public void addAttribute(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -62,17 +63,40 @@ public class AdminController {
 
         if (result.hasErrors()) {
             model.addAttribute("company", companyService.findAllCompany());
+
             return "admin/addWorker";
         }
         if (userService.emailExist(user.getEmail())) {
+
             model.addAttribute("company", companyService.findAllCompany());
             model.addAttribute("error", "Użytkownik o podanym adresie email istnieje!");
+
             return "admin/addWorker";
         }
-
         userService.registryNewWorker(user);
 
         return "redirect:/admin/workers";
+
+    }
+
+    @GetMapping("/admin/editWorker")
+    public String editWorker(@RequestParam(value = "id") String id, Model model) {
+
+        model.addAttribute("company", companyService.findAllCompany());
+        model.addAttribute("user", userService.findById(id));
+
+        return "admin/editWorker";
+
+    }
+    @PostMapping("/admin/editWorker")
+    public String editWorkerPost(@Valid User user,BindingResult result,@RequestParam(value = "id") String id){
+
+        if(result.hasErrors()){
+            return "admin/editWorker";
+        }else {
+            userService.editWorker(userService.findById(id),user);
+            return "admin/allWorkers";
+        }
 
     }
 
@@ -85,12 +109,12 @@ public class AdminController {
 
     @GetMapping("/admin/addCompany")
     public String addCompany(Model model, @RequestParam(value = "id", required = false) String request) {
-      if(request.isEmpty()){
-          model.addAttribute("company", new Company());
-      }else {
-          Long id =Long.parseLong(request);
-          model.addAttribute("company", companyService.findCompanyById(id));
-      }
+        if (request.isEmpty()) {
+            model.addAttribute("company", new Company());
+        } else {
+            Long id = Long.parseLong(request);
+            model.addAttribute("company", companyService.findCompanyById(id));
+        }
         model.addAttribute("admins", userService.findAllAdmins());
 
 
@@ -102,12 +126,12 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/addCompany";
         }
-        if(request.isEmpty()){
+        if (request.isEmpty()) {
             companyService.addNewCompany(company);
             return "admin/companies";
-        }else {
+        } else {
             Company company1 = companyService.findCompanyById(Long.parseLong(request));
-            companyService.editCompany(company1,company);
+            companyService.editCompany(company1, company);
 
         }
         return "admin/companies";
@@ -132,9 +156,9 @@ public class AdminController {
     }
 
     @PostMapping("/admin/editFaultOrder")
-    public String editFaultOrder(FaultOrder faultOrder){
+    public String editFaultOrder(FaultOrder faultOrder) {
         FaultOrder faultOrder1 = faultOrderService.findFaultOrderById(faultOrder.getId());
-        faultOrderService.adminEditFaultOrder(faultOrder,faultOrder1);
+        faultOrderService.adminEditFaultOrder(faultOrder, faultOrder1);
         return "redirect:/admin/faultOrders";
 
     }

@@ -26,7 +26,7 @@
                     <td>${worker.phone}</td>
                     <td>${worker.email}</td>
                     <td>${worker.company.name}</td>
-                    <td>Edytuj Usuń</td>
+                    <td><a href="https://linea-project.herokuapp.com/admin/editWorker?id=${worker.id}" >Edytuj</a> Usuń</td>
                 </tr>
 
             </c:forEach>
