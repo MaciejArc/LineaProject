@@ -43,6 +43,7 @@
 
 <!-- Bootstrap core JavaScript-->
 <%--<script src="vendor/jquery/jquery.min.js"></script>--%>
+<script src="<c:url value="/resources/js/admin/my-js.js"/>"></script>
 <script src="<c:url value="/resources/js/admin/jquery.min.js"/>"></script>
 
 

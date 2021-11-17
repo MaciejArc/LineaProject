@@ -90,13 +90,13 @@ public class AdminController {
     }
 
     @PostMapping("/admin/editWorker")
-    public String editWorkerPost(@Valid User user, BindingResult result, @RequestParam(value = "id") String id) {
+    public String editWorkerPost(@Valid User user, BindingResult result, @RequestParam(value = "id", required = false) String id) {
 
         if (result.hasErrors()) {
             return "admin/editWorker";
         } else {
             userService.editWorker(userService.findById(id), user);
-            return "redirect: /admin/workers";
+            return "redirect:/admin/workers";
         }
 
     }
