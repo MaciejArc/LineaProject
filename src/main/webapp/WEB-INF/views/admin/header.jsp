@@ -98,6 +98,12 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+        <li class="nav-item">
+        <a class="nav-link" href="https://linea-project.herokuapp.com/logout">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Wyloguj</span></a>
+        </li>
+
 
         <!-- Heading -->
         <div class="sidebar-heading">
@@ -348,6 +354,7 @@
                             <img class="img-profile rounded-circle"
                                  src="<c:url value="/resources/images/admin/undraw_profile_1.svg"/>">
                         </a>
+
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
