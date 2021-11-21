@@ -44,7 +44,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container" style="text-align: center">
     # FinalProject - CodersLab <br>
     > Application managing the submission of defects in a construction company. <br>
     ## General Information <br>

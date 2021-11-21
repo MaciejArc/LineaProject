@@ -26,16 +26,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">O projekcie</a>
+                    <a class="nav-link active" aria-current="page" href="https://linea-project.herokuapp.com/about">O projekcie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Instrukcja</a>
+                    <a class="nav-link active" href="https://linea-project.herokuapp.com/instruction">Instrukcja</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        O mnie
-                    </a>
-                </li>
+
 
             </ul>
 
@@ -58,7 +54,7 @@
                 <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Logowanie</h3>
 
                             <form action="login" method="post">
                                 <div class="row">

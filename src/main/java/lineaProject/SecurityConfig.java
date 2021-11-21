@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
     @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
@@ -41,8 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-  //              .defaultSuccessUrl("/user/dashboard")
-              .successHandler(myAuthenticationSuccessHandler())
+                .successHandler(myAuthenticationSuccessHandler())
+//                .and()
+//                .logout()
+//                .logoutUrl("/login")
         ;
 
     }
