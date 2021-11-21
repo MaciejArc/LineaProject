@@ -26,7 +26,7 @@
                     <td>${company.nip}</td>
                     <td>${company.phone}</td>
                     <td>${company.owner.fullName}</td>
-                    <td>Edytuj Usuń</td>
+                    <td><a href="https://linea-project.herokuapp.com/admin/addCompany?id=${company.id}">Edytuj</a></td>
                 </tr>
 
             </c:forEach>
