@@ -136,13 +136,13 @@ public class AdminController {
         }
         if (request.isEmpty()) {
             companyService.addNewCompany(company);
-            return "redirect:admin/companies";
+            return "redirect:/admin/companies";
         } else {
             Company company1 = companyService.findCompanyById(Long.parseLong(request));
             companyService.editCompany(company1, company);
 
         }
-        return "redirect:admin/companies";
+        return "redirect:/admin/companies";
 
     }
 
