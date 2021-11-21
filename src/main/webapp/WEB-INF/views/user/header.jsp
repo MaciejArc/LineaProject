@@ -35,7 +35,7 @@
 
             <div class="col-md-3 text-end">
                 ${userName}
-               <a href="#"><button type="button" class="btn btn-outline-primary me-2">Wyloguj</button></a>
+               <a href="https://linea-project.herokuapp.com/logout"><button type="button" class="btn btn-outline-primary me-2">Wyloguj</button></a>
 
 
             </div>
