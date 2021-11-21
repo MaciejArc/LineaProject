@@ -18,8 +18,10 @@ String roles = user.getRole();
 if(roles.equals("ROLE_ADMIN")){
     httpServletResponse.sendRedirect("/admin/dashboard");
 
-}else {
+}else if(roles.equals("ROLE_CLIENT")) {
     httpServletResponse.sendRedirect("/user/dashboard");
+}else {
+    httpServletResponse.sendRedirect("/worker/dashboard");
 }
     }
 }

@@ -54,8 +54,9 @@
     <h2>Linea Project</h2>
     <p>Projekt stworzony na potrzeby pracy zaliczeniowej kursu programowania w CodersLab.<br>
         Projekt w trakcie realizacji!</p>
-    <p>Aplikacja umożliwia zgłaszanie usterek przez klientów.<br>
-        Przyjmowanie usterek przez administratora, wyznaczasnie pracownika do konkretnego zgłoszenia oraz zarządzanie
+    <p>Aplikacja umożliwia:<br>
+        Monitorowanie zgłoszonych usterek przez klientów.<br>
+        Przyjmowanie usterek przez administratora, wyznaczanie pracownika do konkretnego zgłoszenia oraz zarządzanie
         statusem usterki.</p>
 
     <p>

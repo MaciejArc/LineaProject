@@ -103,7 +103,9 @@ public class AdminController {
 
     @GetMapping("admin/userInfo")
     public String userInfo(Model model, @RequestParam(value = "id") String id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", userService.findById(id));
+        model.addAttribute("faultOrders",faultOrderService.findAllFaultOrderByClientId(Long.parseLong(id)));
 
         return "admin/userInfo";
     }

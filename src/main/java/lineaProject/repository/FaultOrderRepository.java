@@ -11,4 +11,8 @@ public interface FaultOrderRepository extends JpaRepository<FaultOrder,Long> {
     Boolean existsByClientAndId(User user, Long id);
 
     List<FaultOrder> findFaultOrdersByClientId(Long id);
+
+    List<FaultOrder> findFaultOrdersByUserAndStatus(User user,String status);
+
+
 }
