@@ -26,7 +26,7 @@
                     <a class="nav-link active" aria-current="page" href="https://linea-project.herokuapp.com/worker/myFaultOrders">Moje usterki</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="https://linea-project.herokuapp.com/user/addresses">Historia usterek</a>
+                    <a class="nav-link active" href="https://linea-project.herokuapp.com/worker/historyFaultOrders">Historia usterek</a>
                 </li>
 
 
