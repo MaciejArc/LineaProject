@@ -25,7 +25,7 @@
                 <td>${faultOrder.address.fullAddress}</td>
                 <td>${faultOrder.status}</td>
                 <td>${faultOrder.user.fullName}</td>
-                <td><a href="https://linea-project.herokuapp.com/user/addFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
+                <td><a href="https://linea-project.herokuapp.com/worker/editFaultOrder?id=${faultOrder.id}">Edytuj</a></td>
             </tr>
 
         </c:forEach>
