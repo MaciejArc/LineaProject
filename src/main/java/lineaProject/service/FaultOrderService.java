@@ -30,6 +30,10 @@ public class FaultOrderService {
         return faultOrderRepository.findFaultOrdersByClientId(id);
     }
 
+    public List<FaultOrder> findAllFaultOrdersByWorkerId(Long id){
+        return faultOrderRepository.findFaultOrdersByUserId(id);
+    }
+
     public FaultOrder addNewFaultOrder(FaultOrder faultOrder, User user){
        faultOrder.setClient(user);
         return faultOrderRepository.save(faultOrder);

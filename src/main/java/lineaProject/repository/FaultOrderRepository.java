@@ -14,5 +14,6 @@ public interface FaultOrderRepository extends JpaRepository<FaultOrder,Long> {
 
     List<FaultOrder> findFaultOrdersByUserAndStatus(User user,String status);
 
+    List<FaultOrder> findFaultOrdersByUserId(Long id);
 
 }

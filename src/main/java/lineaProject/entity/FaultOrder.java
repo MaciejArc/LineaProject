@@ -2,6 +2,7 @@ package lineaProject.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 
 @Entity
@@ -23,6 +24,16 @@ public class FaultOrder {
     @OneToOne
     private Addresses address;
     private String status = "Zgłoszone";
+
+    private LocalDate pickUpDate = LocalDate.now();
+
+    public LocalDate getPickUpDate() {
+        return pickUpDate;
+    }
+
+    public void setPickUpDate(LocalDate pickUpDate) {
+        this.pickUpDate = pickUpDate;
+    }
 
     public Long getId() {
         return id;

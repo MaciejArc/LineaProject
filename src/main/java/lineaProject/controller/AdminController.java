@@ -110,6 +110,13 @@ public class AdminController {
         return "admin/userInfo";
     }
 
+    @GetMapping("admin/workerInfo")
+    public String workerInfo(Model model, @RequestParam(value = "id") String id){
+        model.addAttribute("user", userService.findById(id));
+        model.addAttribute("faultOrders",faultOrderService.findAllFaultOrdersByWorkerId(Long.parseLong(id)));
+        return "admin/userInfo";
+    }
+
     //COMPANY
     @GetMapping("/admin/companies")
     public String allCompanies(Model model) {
